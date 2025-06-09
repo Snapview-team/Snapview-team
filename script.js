@@ -8,8 +8,10 @@ function submitScore() {
 }
 
 const map = L.map('map').setView([47.5608, -122.0651], 14);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data © OpenStreetMap contributors'
+L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+  attribution: 'Map data © OpenStreetMap contributors, HOT'
+}).addTo(map);
+
 }).addTo(map);
 L.marker([47.5608, -122.0651]).addTo(map)
   .bindPopup('Lake Sammamish State Park')
