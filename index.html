@@ -3,13 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <title>SnapView - 景点打卡原型</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
+  <!-- 样式文件 -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- ✅ Leaflet 样式必须引入 -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha512-sA+e2D+dL6hj70/HybsJ49KcKePZsGsSa+1FwJkQCAi7xbl5Xt1g2UPhcvf0pFVumH4f0QxrD+jhCUtgfd04vQ=="
+    crossorigin=""
+  />
+
+  <!-- ✅ Leaflet JS 也要在 HEAD 引入（防止加载延迟） -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha512-o9N1jT5yR1l+LFVZNR8sCZAj0ueZt6At/lP9mFrIBFCzAY8Q1d50DRayD9Hz7ROrbOesxklYJ4Qv0W1IpKLFsA=="
+    crossorigin=""
+  ></script>
 </head>
 <body>
   <h1>📍 SnapView 景点打卡</h1>
-  <div id="map" style="height: 400px;"></div>
+
+  <!-- 地图容器 -->
+  <div id="map" style="height: 400px; margin-bottom: 15px;"></div>
 
   <div class="info">
     <label>视野评分 (0-5):</label>
@@ -28,7 +45,25 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js"></script>
+  <script>
+    function submitScore() {
+      const score = parseInt(document.getElementById("viewScore").value);
+      if (score < 3) {
+        alert("提示：评分较低，部分评论将被隐藏");
+      } else {
+        alert("感谢您的评价！");
+      }
+    }
+
+    const map = L.map('map').setView([47.5608, -122.0651], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([47.5608, -122.0651])
+      .addTo(map)
+      .bindPopup('Lake Sammamish State Park')
+      .openPopup();
+  </script>
 </body>
 </html>
