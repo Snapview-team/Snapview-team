@@ -1,3 +1,4 @@
+<script>
 function submitScore() {
   const score = parseInt(document.getElementById("viewScore").value);
   if (score < 3) {
@@ -16,3 +17,4 @@ L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 L.marker([47.5608, -122.0651]).addTo(map)
   .bindPopup('Lake Sammamish State Park')
   .openPopup();
+<script>
