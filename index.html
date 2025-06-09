@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SnapView - 景点打卡原型</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>📍 SnapView 景点打卡</h1>
+  <div id="map" style="height: 400px;"></div>
+
+  <div class="info">
+    <label>视野评分 (0-5):</label>
+    <input type="number" id="viewScore" min="0" max="5" />
+    <button onclick="submitScore()">提交评分</button>
+
+    <div class="upload">
+      <label>上传全景图：</label>
+      <input type="file" />
+    </div>
+
+    <div id="analysis">
+      <h3>出片分析：</h3>
+      <p id="light"></p>
+      <p id="direction"></p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
